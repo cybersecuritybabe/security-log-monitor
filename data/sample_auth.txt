@@ -1,0 +1,3 @@
+2026-10-24 09:00:01 INFO User admin successfully logged in from 192.168.1.10
+2026-10-24 09:00:05 INFO Session token generated for user admin
+2026-10-24 09:01:12 WARNING Failed login attempt for user root from 192.168.1.105

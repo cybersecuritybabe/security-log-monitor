@@ -1,0 +1,20 @@
+# Virtual environments
+.venv/
+.venv_backup/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE and system files
+.vscode/
+.DS_Store
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Generated runtime logs
+*.log
