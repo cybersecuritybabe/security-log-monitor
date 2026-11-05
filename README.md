@@ -33,7 +33,9 @@ This project represents an initial implementation within a broader security auto
 
 The current implementation separates log evaluation from file monitoring and command-line orchestration.
 
+### System Data Flow
 
+```text
 Command-Line Interface
          |
          v
@@ -47,17 +49,43 @@ Regex Detection Engine
          |
          v
 Alert Output / Metrics
-
+```
 
 ### Core Components
 
-Component | Responsibility
-| :--- | :--- | :--- |
-| analyze_line() | Evaluates a log entry against configured detection patterns |
-| monitor_logs() | Reads historical or newly appended log entries |
-| arparse | Processes command-line arguments |
-| pathlib | Handles filesystem paths and file validation |
-| re | Validates detection and file-processing behavior |
+| Component | Responsibility |
+|---|---|
+| `analyze_line()` | Evaluates a log entry against predefined detection patterns |
+| `monitor_logs()` | Reads historical or newly appended log entries |
+| `argparse` | Processes command-line arguments |
+| `pathlib` | Handles filesystem paths and file validation |
+| `re` | Provides compiled, case-insensitive pattern matching |
+| `pytest` | Validates detection and file-processing behavior through automated tests |
+
+### Execution Modes
+
+**Batch Mode**
+
+Processes existing log entries, identifies matching events, reports findings, and exits at the end of the file.
+
+**Live Mode**
+
+Begins monitoring at the end of the file, detects newly appended entries, and continues until interrupted by the user.
+
+### Architectural Principles
+
+- **Separation of concerns:** Detection logic is separated from file reading and command-line handling at the function level.
+- **Testability:** Detection behavior can be validated independently using deterministic test inputs.
+- **Safe execution:** The monitor reads source logs without modifying them or executing response actions.
+- **Operational visibility:** Matching events and total alert counts are reported through the console.
+- **Incremental maturity:** The implementation will evolve toward modular components, structured events, and improved reliability.
+
+### Detailed Engineering Documentation
+
+- [System Architecture](docs/architecture.md)
+- [Testing Strategy](docs/testing-strategy.md)
+- [Engineering Roadmap](docs/roadmap.md)
+- [Architecture Decision Records](docs/adr/README.md)
 
 ## Functional Capabilities
 
